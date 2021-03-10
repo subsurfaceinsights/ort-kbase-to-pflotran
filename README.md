@@ -43,7 +43,7 @@ If you do not have PFLOTRAN installed, you can run these infiles using [our free
 Once docker is installed, you can run the model from the `infiles` directory using:
 
 ```
-docker run -V $(pwd):/data subsurfaceinsights/pflotran -pflotranin ./<infile_namen.in>
+docker run -v $(pwd):/data subsurfaceinsights/pflotran -pflotranin ./<infile_namen.in>
 ```
 where `<infile_name>` is replaced with the actual name of the infile you want to run.
 
