@@ -1,0 +1,24 @@
+Nitrososphaeraceae
+1 biomass compounds
+5.04083 H+ + 0.000333333 Cu++ + 1.21613 O2(aq) + 0.001 DGlucose(aq) + 0.000333333 Zn++ + 0.000333333 Mg++ + 0.00133333 Fe+++ + 0.000333333 Cl- + 0.001 LValine(aq) + 0.001 LLeucine(aq) + 0.001 LIsoleucine(aq) + 0.001 LGlutamate- + 0.001 LLysine+ + 0.001 LAlanine(aq) + 0.000333333 Mn++ + 0.000333333 Co++ + 1.72537 NH4+ + 0.000333333 K+ + 0.001 BET(aq) + 0.0268929 SO4-- + 0.000333333 Ca++ -> 0.000333333 SAdenosyl4methylthio2oxobutanoate(aq) + 0.00384381 Glycine(aq) + 0.001 LAsparagine(aq) + 0.000333333 Niacin- + 0.001 LAspartate- + 0.707205 LThreonine(aq)
+YIELD 0.118786
+
+
+NitrososphaeraceaeEdit
+1 biomass compounds
+0.000333333 Cu++ + 1.61071 O2(aq) + 0.001 DGlucose(aq) + 0.000333333 Zn++ + 0.000333333 Mg++ + 0.00133333 Fe+++ + 0.000333333 Cl- + 0.001 LValine(aq) + 0.001 LLeucine(aq) + 0.001 LIsoleucine(aq) + 0.001 LGlutamate- + 0.001 LLysine+ + 0.001 LAlanine(aq) + 0.000333333 Mn++ + 0.000333333 Co++ + 2.79638 NH4+ + 0.000333333 K+ + 0.001 BET(aq) + 0.0268929 SO4-- + 0.000333333 Ca++ -> 1.94891 H+ + 0.000333333 SAdenosyl4methylthio2oxobutanoate(aq) + 0.00384381 Glycine(aq) + 0.001 LAsparagine(aq) + 0.000333333 Niacin- + 0.001 LAspartate- + 0.707205 LThreonine(aq) + 1.07101 NO2-
+YIELD 0.118786
+
+
+Nitrospiraceae
+1 biomass compounds
+1.0 H+ + 2.41803 NO2- + 1.17221 HPO4-- + 0.0005 Cu++ + 8.35319 O2(aq) + 6.96138 CO2(aq) + 0.001 DGlucose(aq) + 0.0005 Ca++ + 0.001 LLeucine(aq) + 0.1 NH4+ + 0.0005 Zn++ + 0.0005 Mg++ + 0.0005 K+ + 0.002 Fe+++ + 0.001 BET(aq) + 0.0403393 SO4-- + 0.001 LIsoleucine(aq) + 0.001 LValine(aq) + 0.001 Methanol(aq) + 0.001 LGlutamate- + 0.001 LAspartate- + 0.001 LLysine+ + 0.001 LAsparagine(aq) + 0.001 LAlanine(aq) + 0.0005 Mn++ + 0.0005 Cl- + 0.001 CH32NH+ + 0.0005 Co++ -> 1.0 NO3- + 0.513716 PPi--- + 0.0005 SAdenosyl4methylthio2oxobutanoate(aq)
+YIELD 0.178179
+
+
+Gammaproteobacteria
+1 biomass compounds
+10.0 H+ + 0.164891 HPO4-- + 0.00455562 O2(aq) + 4.9755 Acetate- + 0.001 DGlucose(aq) + 0.001 LGlutamate- + 0.001 LLeucine(aq) + 0.1 NH4+ + 0.000569453 K+ + 0.001 LAspartate- + 0.000569453 Mg++ + 0.00227781 Fe++ + 0.000569453 Zn++ + 0.444681 SO4-- + 0.000569453 Co++ + 0.001 LIsoleucine(aq) + 0.001 LValine(aq) + 0.001 LLysine+ + 0.001 LAlanine(aq) + 0.001 LAsparagine(aq) + 0.000569453 Cu++ + 4.03193 NO3- + 0.001 Succinate-- + 0.000569453 Mn++ + 0.000569453 Ca++ + 0.000569453 Cl- -> 0.000569453 SAdenosyl4methylthio2oxobutanoate(aq) + 0.000569453 Methanol(aq) + 0.000569453 Niacin- + 0.398739 LMethionine(aq) + 1.0 N2(aq)
+YIELD 0.20293
+
+

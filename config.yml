@@ -1,0 +1,7 @@
+# KBase config
+endpoint: https://kbase.us/services
+workspace-url: https://kbase.us/services/ws
+KB_AUTH_TOKEN: <YOUR_AUTH_TOKEN_HERE>
+NAR_ID: rlrubinstein:narrative_1599076553976
+NAR_NAME: ORT_N_cycle
+

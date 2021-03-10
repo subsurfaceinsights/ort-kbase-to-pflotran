@@ -1,0 +1,274 @@
+#Description: Literature-based nitrogen cycling model
+
+SIMULATION
+  SIMULATION_TYPE SUBSURFACE
+  PROCESS_MODELS
+#   SUBSURFACE_FLOW flow
+#     MODE RICHARDS
+#   /
+    SUBSURFACE_TRANSPORT transport
+      MODE GIRT
+    /
+  /
+END
+
+SUBSURFACE
+
+#=========================== numerical methods ================================
+NUMERICAL_METHODS TRANSPORT
+
+  LINEAR_SOLVER
+    SOLVER DIRECT
+  /
+
+END
+
+#=========================== chemistry ========================================
+CHEMISTRY
+  PRIMARY_SPECIES
+    Acetate-
+    H+
+    HCO3-
+    O2(aq)
+    N2(aq)
+    NO3-
+    NH4+
+    NO2-
+    CO2(aq)
+  /
+  SECONDARY_SPECIES
+    OH-
+    CO3--
+    NH3(aq)
+  /
+  DECOUPLED_EQUILIBRIUM_REACTIONS
+    O2(aq)
+    N2(aq)
+    CO2(aq)
+    NO3-
+    NO2-
+    Acetate-
+  /
+  PASSIVE_GAS_SPECIES
+    CO2(g)
+    O2(g)
+    N2(g)
+  /
+  IMMOBILE_SPECIES
+    AOB
+    NOB
+    NRB
+  /
+  
+  MICROBIAL_REACTION
+# Ammonia -> Nitrite (AOB) 
+    REACTION 1.0225 NH4+ + 1.3875 O2(aq) + 0.09 CO2(aq) + 0.0225 HCO3- ->  2 H+ + 1 NO2-
+    RATE_CONSTANT 1.d-7
+    MONOD
+      SPECIES_NAME O2(aq) 
+      HALF_SATURATION_CONSTANT 1.d-5        
+      THRESHOLD_CONCENTRATION 1.d-9
+    /
+    MONOD 
+      SPECIES_NAME NH4+ 
+      HALF_SATURATION_CONSTANT 5.d-8        
+      THRESHOLD_CONCENTRATION 1.d-9
+    /
+   INHIBITION
+     SPECIES_NAME O2(aq)
+     TYPE INVERSE_MONOD
+     INHIBITION_CONSTANT 1.d-8   
+   /
+    BIOMASS
+      SPECIES_NAME AOB
+      YIELD 0.0225d0
+    /
+  /
+
+  MICROBIAL_REACTION
+# Nitrite -> Nitrate (NOB) 
+    REACTION 1 NO2- + 0.0073 NH4+ + 0.4635 O2(aq) + 0.0292 CO2(aq) + 0.0073 HCO3- ->  1 NO3- 
+    RATE_CONSTANT 8.51d-8
+    MONOD 
+      SPECIES_NAME NO2- 
+      HALF_SATURATION_CONSTANT 5.d-7         
+      THRESHOLD_CONCENTRATION 1.d-9
+    /
+   INHIBITION
+     SPECIES_NAME HCO3-
+     TYPE INVERSE_MONOD
+     INHIBITION_CONSTANT 6.d-8  
+    /
+
+   INHIBITION
+     SPECIES_NAME O2(aq)
+     TYPE INVERSE_MONOD
+     INHIBITION_CONSTANT 1.d-8   
+   /
+    BIOMASS
+      SPECIES_NAME NOB
+      YIELD 0.0073d0
+    /
+  /
+
+  MICROBIAL_REACTION
+# NO3 -> N2 (NRB) 
+    REACTION 0.869 Acetate- + 1.0 H+ + 1.0 NO3- -> 0.869 HCO3- + 0.458 N2(aq) + 0.444 CO2(aq)
+    RATE_CONSTANT 2.34d-8
+    MONOD
+      SPECIES_NAME NO3- 
+      HALF_SATURATION_CONSTANT 1.d-7        
+      THRESHOLD_CONCENTRATION 1.d-9
+    /
+    MONOD 
+      SPECIES_NAME Acetate- 
+      HALF_SATURATION_CONSTANT 7.d-6        
+      THRESHOLD_CONCENTRATION 1.d-9
+    /
+    BIOMASS
+      SPECIES_NAME NRB
+      YIELD 0.08484d0
+    /
+  /
+  DATABASE nitrogen_cycling_0d_datafiles/hanford_pcl.dat
+  LOG_FORMULATION
+#  OPERATOR_SPLITTING
+  ACTIVITY_COEFFICIENTS TIMESTEP
+#  MOLAL
+  OUTPUT
+    PH
+    TOTAL
+    FREE_ION
+    ALL
+  /
+END
+
+#=========================== discretization ===================================
+GRID
+  TYPE structured
+  NXYZ 1 1 1
+  BOUNDS
+    0.d0 0.d0 0.d0
+    20.d-2 10.d-2 1.d-2
+  /
+END
+
+#=========================== fluid properties =================================
+FLUID_PROPERTY
+  DIFFUSION_COEFFICIENT 0.d-9
+END
+
+#=========================== material properties ==============================
+MATERIAL_PROPERTY soil1
+  ID 1
+  POROSITY 0.25d0
+  TORTUOSITY 1.d0
+  PERMEABILITY
+    PERM_ISO 1.d-12
+  /
+  CHARACTERISTIC_CURVES cc1
+END
+
+#=========================== characteristic curves =============================
+CHARACTERISTIC_CURVES cc1
+  SATURATION_FUNCTION VAN_GENUCHTEN
+    ALPHA  1.d-4
+    M 0.5d0
+    LIQUID_RESIDUAL_SATURATION 0.1d0
+    MAX_CAPILLARY_PRESSURE 1.d8
+  /
+  PERMEABILITY_FUNCTION MUALEM_VG_LIQ
+    M 0.5d0
+    LIQUID_RESIDUAL_SATURATION 0.1d0
+  /
+END
+
+#=========================== output options ===================================
+OUTPUT
+  TIMES d 1.d-1
+  PERIODIC_OBSERVATION TIMESTEP 1
+  PRINT_COLUMN_IDS
+# FORMAT TECPLOT POINT
+# VELOCITY_AT_CENTER
+END
+
+#=========================== times ============================================
+TIME
+  FINAL_TIME 2.5d-1 d
+  INITIAL_TIMESTEP_SIZE 1.d-5 d
+  MAXIMUM_TIMESTEP_SIZE 1.d-3 d
+  MAXIMUM_TIMESTEP_SIZE 1.d-2 d at 1.d-2 d
+END
+
+
+#=========================== regions ==========================================
+REGION all
+  COORDINATES
+    0.d0 0.d0 0.d0
+    20.d-2 10.d-2 1.d-2
+  /
+END
+
+OBSERVATION rxn
+  REGION all
+END
+
+#=========================== flow conditions ==================================
+FLOW_CONDITION initial
+  TYPE
+    PRESSURE HYDROSTATIC
+  /
+  DATUM 0.d0 0.d0 1.d0
+  PRESSURE 101325.d0
+END
+
+FLOW_CONDITION recharge
+  TYPE
+    FLUX NEUMANN
+  /
+  FLUX 10 cm/y
+END
+
+#=========================== transport conditions =============================
+TRANSPORT_CONDITION initial
+  TYPE DIRICHLET
+  CONSTRAINT_LIST
+    0.d0 initial
+  /
+END
+
+#=========================== constraints ======================================
+CONSTRAINT initial
+  CONCENTRATIONS
+    Acetate- 1.318e-4    T
+    H+     7.d0      pH
+    HCO3-  1.d-3      T  
+    CO2(aq)  1.d-6      T 
+    O2(aq) 0.23       G  O2(g)
+    N2(aq) 1.e-8      T
+    NO3-   1e-8      T
+    NO2-   1e-8      T
+    NH4+   9.e-7      T
+  /
+  IMMOBILE
+    AOB 1.d-3
+    NOB 1.d-3
+    NRB 1.d-3
+  /
+END
+
+#=========================== condition couplers ===============================
+# initial condition
+INITIAL_CONDITION
+# FLOW_CONDITION initial
+  TRANSPORT_CONDITION initial
+  REGION all
+END
+
+#=========================== stratigraphy couplers ============================
+STRATA
+  REGION all
+  MATERIAL soil1
+END
+
+END_SUBSURFACE

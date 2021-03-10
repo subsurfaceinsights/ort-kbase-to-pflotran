@@ -1,0 +1,334 @@
+SIMULATION
+  SIMULATION_TYPE SUBSURFACE
+  PROCESS_MODELS
+#   SUBSURFACE_FLOW flow
+#     MODE RICHARDS
+#   /
+    SUBSURFACE_TRANSPORT transport
+      MODE GIRT
+    /
+  /
+END
+
+SUBSURFACE
+
+#=========================== numerical methods ================================
+NUMERICAL_METHODS TRANSPORT
+
+  LINEAR_SOLVER
+    SOLVER DIRECT
+  /
+
+END
+
+#=========================== chemistry ========================================
+CHEMISTRY
+  PRIMARY_SPECIES
+    Acetate-
+    H+
+    HCO3-
+    Ca++
+    O2(aq)
+    N2(aq)
+    NO3-
+    NH4+
+    NO2-
+    CO2(aq)
+    Cu++
+    Mg++
+    Fe++
+    Fe+++
+    Cl-
+    Co++
+    Mn++
+    SO4--
+    HPO4--
+    Zn++
+    K+
+    LLeucine(aq)
+    LIsoleucine(aq)
+    BET(aq)
+    LValine(aq)
+    SAdenosyl4methylthio2oxobutanoate(aq)
+    CH32NH+
+    DGlucose(aq)
+    LGlutamate-
+    LAlanine(aq)
+    LAspartate-
+    LLysine+
+    LMethionine(aq)
+    Niacin-
+    LAsparagine(aq)
+    Succinate--
+    Glycine(aq)
+    LThreonine(aq)
+    PPi---
+    Methanol(aq)
+  /
+  SECONDARY_SPECIES
+    OH-
+    CO3--
+    CaCO3(aq)
+    CaHCO3+
+    CaOH+
+    NH3(aq)
+  /
+  DECOUPLED_EQUILIBRIUM_REACTIONS
+    O2(aq)
+    N2(aq)
+    CO2(aq)
+    NO3-
+    NO2-
+    Acetate-
+    Fe+++
+    Methanol(aq)
+    Glycine(aq)
+  /
+  PASSIVE_GAS_SPECIES
+    CO2(g)
+    O2(g)
+    N2(g)
+  /
+  IMMOBILE_SPECIES
+    Nitrososphaeraceae
+    Nitrospiraceae
+    Gammaproteobacteria
+  /
+  
+  MICROBIAL_REACTION
+# Ammonia -> Nitrite (AOA) - Nitrososphaeraceae
+    REACTION 0.000333333 Cu++ + 1.61071 O2(aq) + 0.001 DGlucose(aq) + 0.000333333 Zn++ + 0.000333333 Mg++ + 0.00133333 Fe+++ + 0.000333333 Cl- + 0.001 LValine(aq) + 0.001 LLeucine(aq) + 0.001 LIsoleucine(aq) + 0.001 LGlutamate- + 0.001 LLysine+ + 0.001 LAlanine(aq) + 0.000333333 Mn++ + 0.000333333 Co++ + 2.79638 NH4+ + 0.000333333 K+ + 0.001 BET(aq) + 0.0268929 SO4-- + 0.000333333 Ca++ -> 1.94891 H+ + 0.000333333 SAdenosyl4methylthio2oxobutanoate(aq) + 0.00384381 Glycine(aq) + 0.001 LAsparagine(aq) + 0.000333333 Niacin- + 0.001 LAspartate- + 0.707205 LThreonine(aq) + 1.07101 NO2-
+    RATE_CONSTANT 1.d-7
+    MONOD
+      SPECIES_NAME O2(aq) 
+      HALF_SATURATION_CONSTANT 1.d-5        
+      THRESHOLD_CONCENTRATION 1.d-9
+    /
+    MONOD 
+      SPECIES_NAME NH4+ 
+      HALF_SATURATION_CONSTANT 5.d-8        
+      THRESHOLD_CONCENTRATION 1.d-9
+    /
+   INHIBITION
+     SPECIES_NAME O2(aq)
+     TYPE INVERSE_MONOD
+     INHIBITION_CONSTANT 1.d-8   
+   /
+    BIOMASS
+      SPECIES_NAME Nitrososphaeraceae
+      YIELD 0.118786d0
+    /
+  /
+
+  MICROBIAL_REACTION
+# Nitrite -> Nitrate (NOB)  - Nitrospiraceae
+    REACTION 1.0 H+ + 2.41803 NO2- + 1.17221 HPO4-- + 0.0005 Cu++ + 8.35319 O2(aq) + 6.96138 CO2(aq) + 0.001 DGlucose(aq) + 0.0005 Ca++ + 0.001 LLeucine(aq) + 0.1 NH4+ + 0.0005 Zn++ + 0.0005 Mg++ + 0.0005 K+ + 0.002 Fe+++ + 0.001 BET(aq) + 0.0403393 SO4-- + 0.001 LIsoleucine(aq) + 0.001 LValine(aq) + 0.001 Methanol(aq) + 0.001 LGlutamate- + 0.001 LAspartate- + 0.001 LLysine+ + 0.001 LAsparagine(aq) + 0.001 LAlanine(aq) + 0.0005 Mn++ + 0.0005 Cl- + 0.001 CH32NH+ + 0.0005 Co++ -> 1.0 NO3- + 0.513716 PPi--- + 0.0005 SAdenosyl4methylthio2oxobutanoate(aq)
+    RATE_CONSTANT 8.51d-8
+    MONOD 
+      SPECIES_NAME NO2- 
+      HALF_SATURATION_CONSTANT 5.d-7        
+      THRESHOLD_CONCENTRATION 1.d-9
+    /
+   INHIBITION
+     SPECIES_NAME O2(aq)
+     TYPE INVERSE_MONOD
+     INHIBITION_CONSTANT 1.d-8   
+   /
+    BIOMASS
+      SPECIES_NAME Nitrospiraceae
+      YIELD 0.178179d0
+    /
+  /
+
+  MICROBIAL_REACTION
+# NO3 -> N2 (NRB) Mixed bag denitrifier
+    REACTION 10.0 H+ + 0.164891 HPO4-- + 0.00455562 O2(aq) + 4.9755 Acetate- + 0.001 DGlucose(aq) + 0.001 LGlutamate- + 0.001 LLeucine(aq) + 0.1 NH4+ + 0.000569453 K+ + 0.001 LAspartate- + 0.000569453 Mg++ + 0.00227781 Fe++ + 0.000569453 Zn++ + 0.444681 SO4-- + 0.000569453 Co++ + 0.001 LIsoleucine(aq) + 0.001 LValine(aq) + 0.001 LLysine+ + 0.001 LAlanine(aq) + 0.001 LAsparagine(aq) + 0.000569453 Cu++ + 4.03193 NO3- + 0.001 Succinate-- + 0.000569453 Mn++ + 0.000569453 Ca++ + 0.000569453 Cl- -> 0.000569453 SAdenosyl4methylthio2oxobutanoate(aq) + 0.000569453 Methanol(aq) + 0.000569453 Niacin- + 0.398739 LMethionine(aq) + 1.0 N2(aq)
+    RATE_CONSTANT 2.34d-8
+    MONOD
+      SPECIES_NAME NO3- 
+      HALF_SATURATION_CONSTANT 1.d-7         
+      THRESHOLD_CONCENTRATION 1.d-9
+    /
+    MONOD 
+      SPECIES_NAME Acetate- 
+      HALF_SATURATION_CONSTANT 7.d-6        
+      THRESHOLD_CONCENTRATION 1.d-9
+    /
+    BIOMASS
+      SPECIES_NAME Gammaproteobacteria
+      YIELD 0.202999d0
+    /
+  /
+
+  DATABASE ./nitrogen_cycling_in_hanford_300_river_sediments_0d_datafiles/hanford_pcl.dat
+  LOG_FORMULATION
+#  OPERATOR_SPLITTING
+  ACTIVITY_COEFFICIENTS TIMESTEP
+#  MOLAL
+  OUTPUT
+    PH
+    TOTAL
+    FREE_ION
+    ALL
+  /
+END
+
+#=========================== discretization ===================================
+GRID
+  TYPE structured
+  NXYZ 1 1 1
+  BOUNDS
+    0.d0 0.d0 0.d0
+    20.d-2 10.d-2 1.d-2
+  /
+END
+
+#=========================== fluid properties =================================
+FLUID_PROPERTY
+  DIFFUSION_COEFFICIENT 0.d-9
+END
+
+#=========================== material properties ==============================
+MATERIAL_PROPERTY soil1
+  ID 1
+  POROSITY 0.25d0
+  TORTUOSITY 1.d0
+  PERMEABILITY
+    PERM_ISO 1.d-12
+  /
+  CHARACTERISTIC_CURVES cc1
+END
+
+#=========================== characteristic curves =============================
+CHARACTERISTIC_CURVES cc1
+  SATURATION_FUNCTION VAN_GENUCHTEN
+    ALPHA  1.d-4
+    M 0.5d0
+    LIQUID_RESIDUAL_SATURATION 0.1d0
+    MAX_CAPILLARY_PRESSURE 1.d8
+  /
+  PERMEABILITY_FUNCTION MUALEM_VG_LIQ
+    M 0.5d0
+    LIQUID_RESIDUAL_SATURATION 0.1d0
+  /
+END
+
+#=========================== output options ===================================
+OUTPUT
+  TIMES d 1.d-1
+  PERIODIC_OBSERVATION TIMESTEP 1
+  PRINT_COLUMN_IDS
+# FORMAT TECPLOT POINT
+# VELOCITY_AT_CENTER
+END
+
+#=========================== times ============================================
+TIME
+  FINAL_TIME 2.5d-1 d
+  INITIAL_TIMESTEP_SIZE 1.d-5 d
+  MAXIMUM_TIMESTEP_SIZE 1.d-3 d
+  MAXIMUM_TIMESTEP_SIZE 1.d-2 d at 1.d-2 d
+END
+
+#=========================== regions ==========================================
+REGION all
+  COORDINATES
+    0.d0 0.d0 0.d0
+    20.d-2 10.d-2 1.d-2
+  /
+END
+
+OBSERVATION rxn
+  REGION all
+END
+
+#=========================== flow conditions ==================================
+FLOW_CONDITION initial
+  TYPE
+    PRESSURE HYDROSTATIC
+  /
+  DATUM 0.d0 0.d0 1.d0
+  PRESSURE 101325.d0
+END
+
+FLOW_CONDITION recharge
+  TYPE
+    FLUX NEUMANN
+  /
+  FLUX 10 cm/y
+END
+
+#=========================== transport conditions =============================
+TRANSPORT_CONDITION initial
+  TYPE DIRICHLET
+  CONSTRAINT_LIST
+    0.d0 initial
+  /
+END
+
+#=========================== constraints ======================================
+CONSTRAINT initial
+  CONCENTRATIONS
+    Acetate- 1.318e-4    T
+    H+     7.d0      pH
+    HCO3-  1.d-3      T  
+    CO2(aq)  1.d-6      T !G  CO2(g)
+    Ca++   5.d-4      T 
+    O2(aq) 0.23       G  O2(g)
+    N2(aq) 1.e-8      T
+    NO3-   1e-8      T
+    NO2-   1e-8      T
+    NH4+   9.e-7      T
+    Cu++  1.d-6      T
+    Mg++  1.1d-5      T
+    Fe++  1.6d-6      T
+    Fe+++  1.06d-5      T
+    Cl-  1.d-6      T
+    Co++   1.d-6      T
+    Mn++  9.d-7      T
+    SO4--  1.d-5      T
+    HPO4--  1.d-5      T
+    Zn++  1.d-6      T
+    K+  3.2d-6      T
+    LLeucine(aq)  8.d-7      T
+    LIsoleucine(aq)  4.d-7      T
+    BET(aq)  3.d-7      T
+    LValine(aq)  7.d-7      T
+    SAdenosyl4methylthio2oxobutanoate(aq)  1.d-8      T
+    CH32NH+  1.d-7      T
+    DGlucose(aq)  8.9d-6      T
+    LGlutamate-  1.d-7      T
+    LAlanine(aq)  2.1d-6      T
+    LAspartate-  11.7d-6      T
+    LLysine+  0.4d-6      T
+    LMethionine(aq)   1e-8      T
+    Niacin-   1e-8      T
+    LAsparagine(aq)  3.2d-6      T
+    Succinate--  1.1d-6      T
+    Glycine(aq)   1e-8      T
+    LThreonine(aq)   1e-8      T
+    PPi---   1e-8      T
+    Methanol(aq)  36.0d-6      T  
+  /
+  IMMOBILE
+    Nitrososphaeraceae 1.d-3
+    Nitrospiraceae 1.d-3
+    Gammaproteobacteria 1.d-3
+  /
+END
+
+#=========================== condition couplers ===============================
+# initial condition
+INITIAL_CONDITION
+# FLOW_CONDITION initial
+  TRANSPORT_CONDITION initial
+  REGION all
+END
+
+#=========================== stratigraphy couplers ============================
+STRATA
+  REGION all
+  MATERIAL soil1
+END
+
+END_SUBSURFACE

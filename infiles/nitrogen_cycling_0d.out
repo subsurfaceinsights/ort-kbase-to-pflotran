@@ -1,0 +1,883 @@
+
+=================
+  PFLOTRAN v3.0
+=================
+
+
+ ! ************************************************************************** !
+
+ Initial Basis
+
+ Primary Species:
+  Acetate-   (redox species)
+    Charge:  -1.00
+    Molar Mass:   59.0446 [g/mol]
+    Debye-Huckel a0:    4.5000 [Angstrom]
+    Equilibrium Aqueous Reaction: 
+        -1.0000  Acetate-                                                                                                                        
+        -1.0000  H+                                                                                                                              
+         1.0000  Acetic_acid(aq)                                                                                                                 
+      logK:     4.7812     4.7572     4.8080     4.9438     5.1953     5.5241     5.9420     6.5094
+
+  H+
+    Charge:   1.00
+    Molar Mass:    1.0079 [g/mol]
+    Debye-Huckel a0:    9.0000 [Angstrom]
+
+  HCO3-
+    Charge:  -1.00
+    Molar Mass:   61.0171 [g/mol]
+    Debye-Huckel a0:    4.0000 [Angstrom]
+
+  O2(aq)   (redox species)
+    Charge:   0.00
+    Molar Mass:   31.9988 [g/mol]
+    Debye-Huckel a0:    3.0000 [Angstrom]
+
+  N2(aq)   (redox species)
+    Charge:   0.00
+    Molar Mass:   28.0135 [g/mol]
+    Debye-Huckel a0:    3.0000 [Angstrom]
+    Equilibrium Aqueous Reaction: 
+        -1.0000  N2(aq)                                                                                                                          
+        -3.0000  H2O                                                                                                                             
+         1.5000  O2(g)                                                                                                                           
+         2.0000  NH3(aq)                                                                                                                         
+      logK:  -123.4712  -112.1135   -99.2148   -87.5714   -76.2582   -67.4642   -60.4620   -54.7940
+
+  NO3-   (redox species)
+    Charge:  -1.00
+    Molar Mass:   62.0049 [g/mol]
+    Debye-Huckel a0:    3.0000 [Angstrom]
+    Equilibrium Aqueous Reaction: 
+        -1.0000  NO3-                                                                                                                            
+        -1.0000  H+                                                                                                                              
+        -1.0000  H2O                                                                                                                             
+         1.0000  NH3(aq)                                                                                                                         
+         2.0000  O2(g)                                                                                                                           
+      logK:   -62.8645   -56.3035   -48.6988   -41.6846   -34.6926   -29.0797   -24.4213   -20.3964
+
+  NH4+
+    Charge:   1.00
+    Molar Mass:   18.0385 [g/mol]
+    Debye-Huckel a0:    2.5000 [Angstrom]
+    Equilibrium Aqueous Reaction: 
+        -1.0000  NH4+                                                                                                                            
+         1.0000  H+                                                                                                                              
+         1.0000  NH3(aq)                                                                                                                         
+      logK:   -10.0691    -9.2410    -8.2847    -7.4010    -6.5156    -5.7992    -5.1995    -4.6767
+
+  NO2-   (redox species)
+    Charge:  -1.00
+    Molar Mass:   46.0055 [g/mol]
+    Debye-Huckel a0:    3.0000 [Angstrom]
+    Equilibrium Aqueous Reaction: 
+        -1.0000  NO2-                                                                                                                            
+        -1.0000  H+                                                                                                                              
+        -1.0000  H2O                                                                                                                             
+         1.0000  NH3(aq)                                                                                                                         
+         1.5000  O2(g)                                                                                                                           
+      logK:   -47.4380   -42.5178   -36.7888   -31.4804   -26.1599   -21.8585   -18.2539   -15.0902
+
+  CO2(aq)   (redox species)
+    Charge:   0.00
+    Molar Mass:   44.0098 [g/mol]
+    Debye-Huckel a0:    3.0000 [Angstrom]
+    Equilibrium Aqueous Reaction: 
+        -1.0000  CO2(aq)                                                                                                                         
+        -1.0000  H2O                                                                                                                             
+         1.0000  H+                                                                                                                              
+         1.0000  HCO3-                                                                                                                           
+      logK:    -6.5804    -6.3447    -6.2684    -6.3882    -6.7235    -7.1969    -7.7868    -8.5280
+
+
+ Secondary Species:
+  OH-
+    Charge:  -1.00
+    Molar Mass:   17.0073 [g/mol]
+    Debye-Huckel a0:    3.5000 [Angstrom]
+    Equilibrium Aqueous Reaction: 
+        -1.0000  OH-                                                                                                                             
+        -1.0000  H+                                                                                                                              
+         1.0000  H2O                                                                                                                             
+      logK:    14.9398    13.9951    13.0272    12.2551    11.6308    11.2836    11.1675    11.3002
+
+  CO3--
+    Charge:  -2.00
+    Molar Mass:   60.0092 [g/mol]
+    Debye-Huckel a0:    4.5000 [Angstrom]
+    Equilibrium Aqueous Reaction: 
+        -1.0000  CO3--                                                                                                                           
+        -1.0000  H+                                                                                                                              
+         1.0000  HCO3-                                                                                                                           
+      logK:    10.6241    10.3288    10.1304    10.0836    10.2003    10.4648    10.8707    11.4638
+
+  NH3(aq)
+    Charge:   0.00
+    Molar Mass:   17.0306 [g/mol]
+    Debye-Huckel a0:    3.0000 [Angstrom]
+
+
+ Gas Components:
+  CO2(g)
+    Molar Mass:   44.0098 [g/mol]
+    Gas Reaction: 
+        -1.0000  CO2(g)                                                                                                                          
+        -1.0000  H2O                                                                                                                             
+         1.0000  H+                                                                                                                              
+         1.0000  HCO3-                                                                                                                           
+      logK:    -7.6765    -7.8136    -8.0527    -8.3574    -8.7692    -9.2165    -9.7202   -10.3393
+
+  O2(g)
+    Molar Mass:   31.9988 [g/mol]
+    Gas Reaction: 
+        -1.0000  O2(g)                                                                                                                           
+         1.0000  O2(aq)                                                                                                                          
+      logK:    -2.6567    -2.8983    -3.0633    -3.1076    -3.0354    -2.8742    -2.6488    -2.3537
+
+  N2(g)
+    Molar Mass:   28.0135 [g/mol]
+    Gas Reaction: 
+        -1.0000  N2(g)                                                                                                                           
+        -3.0000  H2O                                                                                                                             
+         1.5000  O2(g)                                                                                                                           
+         2.0000  NH3(aq)                                                                                                                         
+      logK:  -126.4441  -115.2999  -102.5336   -90.9048   -79.4906   -70.5141   -63.2723   -57.3044
+
+
+ Minerals: None
+
+ Surface Complexation Reactions: None
+
+   Surface Complexes: None
+
+ Ion Exchange Reactions: None
+
+ ! ************************************************************************** !
+
+
+ ! ************************************************************************** !
+
+ Final Basis
+
+ Primary Species:
+  Acetate-   (redox species)
+    Charge:  -1.00
+    Molar Mass:   59.0446 [g/mol]
+    Debye-Huckel a0:    4.5000 [Angstrom]
+
+  H+
+    Charge:   1.00
+    Molar Mass:    1.0079 [g/mol]
+    Debye-Huckel a0:    9.0000 [Angstrom]
+
+  HCO3-
+    Charge:  -1.00
+    Molar Mass:   61.0171 [g/mol]
+    Debye-Huckel a0:    4.0000 [Angstrom]
+
+  O2(aq)   (redox species)
+    Charge:   0.00
+    Molar Mass:   31.9988 [g/mol]
+    Debye-Huckel a0:    3.0000 [Angstrom]
+
+  N2(aq)   (redox species)
+    Charge:   0.00
+    Molar Mass:   28.0135 [g/mol]
+    Debye-Huckel a0:    3.0000 [Angstrom]
+
+  NO3-   (redox species)
+    Charge:  -1.00
+    Molar Mass:   62.0049 [g/mol]
+    Debye-Huckel a0:    3.0000 [Angstrom]
+
+  NH4+
+    Charge:   1.00
+    Molar Mass:   18.0385 [g/mol]
+    Debye-Huckel a0:    2.5000 [Angstrom]
+
+  NO2-   (redox species)
+    Charge:  -1.00
+    Molar Mass:   46.0055 [g/mol]
+    Debye-Huckel a0:    3.0000 [Angstrom]
+
+  CO2(aq)   (redox species)
+    Charge:   0.00
+    Molar Mass:   44.0098 [g/mol]
+    Debye-Huckel a0:    3.0000 [Angstrom]
+
+
+ Secondary Species:
+  OH-
+    Charge:  -1.00
+    Molar Mass:   17.0073 [g/mol]
+    Debye-Huckel a0:    3.5000 [Angstrom]
+    Equilibrium Aqueous Reaction: 
+        -1.0000  OH-                                                                                                                             
+         1.0000  H2O                                                                                                                             
+        -1.0000  H+                                                                                                                              
+      logK:    14.9398    13.9951    13.0272    12.2551    11.6308    11.2836    11.1675    11.3002
+
+  CO3--
+    Charge:  -2.00
+    Molar Mass:   60.0092 [g/mol]
+    Debye-Huckel a0:    4.5000 [Angstrom]
+    Equilibrium Aqueous Reaction: 
+        -1.0000  CO3--                                                                                                                           
+        -1.0000  H+                                                                                                                              
+         1.0000  HCO3-                                                                                                                           
+      logK:    10.6241    10.3288    10.1304    10.0836    10.2003    10.4648    10.8707    11.4638
+
+  NH3(aq)
+    Charge:   0.00
+    Molar Mass:   17.0306 [g/mol]
+    Debye-Huckel a0:    3.0000 [Angstrom]
+    Equilibrium Aqueous Reaction: 
+        -1.0000  NH3(aq)                                                                                                                         
+        -1.0000  H+                                                                                                                              
+         1.0000  NH4+                                                                                                                            
+      logK:    10.0691     9.2410     8.2847     7.4010     6.5156     5.7992     5.1995     4.6767
+
+
+ Gas Components:
+  CO2(g)
+    Molar Mass:   44.0098 [g/mol]
+    Gas Reaction: 
+        -1.0000  CO2(g)                                                                                                                          
+        -1.0000  H2O                                                                                                                             
+         1.0000  H+                                                                                                                              
+         1.0000  HCO3-                                                                                                                           
+      logK:    -7.6765    -7.8136    -8.0527    -8.3574    -8.7692    -9.2165    -9.7202   -10.3393
+
+  O2(g)
+    Molar Mass:   31.9988 [g/mol]
+    Gas Reaction: 
+        -1.0000  O2(g)                                                                                                                           
+         1.0000  O2(aq)                                                                                                                          
+      logK:    -2.6567    -2.8983    -3.0633    -3.1076    -3.0354    -2.8742    -2.6488    -2.3537
+
+  N2(g)
+    Molar Mass:   28.0135 [g/mol]
+    Gas Reaction: 
+        -1.0000  N2(g)                                                                                                                           
+        -3.0000  H2O                                                                                                                             
+        -2.0000  H+                                                                                                                              
+         1.5000  O2(aq)                                                                                                                          
+         2.0000  NH4+                                                                                                                            
+      logK:  -110.2910  -101.1653   -90.5592   -80.7642   -71.0125   -63.2270   -56.8465   -51.4815
+
+
+ Minerals: None
+
+ Surface Complexation Reactions: None
+
+   Surface Complexes: None
+
+ Ion Exchange Reactions: None
+
+ ! ************************************************************************** !
+
+--------------------------------------------------------------------------------
+
+     9  Primary Species
+
+              Acetate-              H+                    HCO3-               
+              O2(aq)                N2(aq)                NO3-                
+              NH4+                  NO2-                  CO2(aq)             
+
+
+     3  Secondary Complex Species
+
+              OH-                   CO3--                 NH3(aq)             
+
+
+     0  Active Gas Species
+
+
+
+     3  Passive Gas Species
+
+              CO2(g)                O2(g)                 N2(g)               
+
+
+     0  Reference Minerals
+
+
+
+     0  Kinetic Mineral Reactions
+
+
+
+     0  Ion Exchange Reactions
+
+     0  Ion Exchange Cations
+--------------------------------------------------------------------------------
+ Extent of Gridded Domain
+  X: 0.0000000000000000 - 0.20000000000000001
+  Y: 0.0000000000000000 - 0.10000000000000001
+  Z: 0.0000000000000000 - 1.0000000000000000E-002
+
+
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+  Initial Condition
+
+--------------------------------------------------------------------------------
+     Transport Condition:   initial
+                  Region:   all
+--------------------------------------------------------------------------------
+
+  Transport Condition: initial
+
+  Constraint: initial
+  ----------------------------------------------------------------------------
+        iterations:    11
+                pH:   7.0000
+                pe:  13.7220
+                Eh:   0.8118
+    ionic strength:   5.6884E-04 [mol/L]
+    charge balance:  -1.1314E-03
+          pressure:   1.0132E+05 [Pa]
+       temperature:    25.00 [C]
+       density H2O:   997.16 [kg/m^3]
+ ln / activity H2O:   0.0000E+00  1.0000E+00    [---]
+ mole fraction H2O:   9.9997E-01    [---]
+ mass fraction H2O:   9.9992E-01    [---]
+  ----------------------------------------------------------------------------
+
+  primary                   free        total
+  species                   molal       molal       act coef     constraint
+  ----------------------------------------------------------------------------
+  Acetate-                  1.3218E-04  1.3218E-04  9.7329E-01    total aq
+  H+                        1.0265E-07 -5.1623E-07  9.7416E-01    pH
+  HCO3-                     1.0023E-03  1.0028E-03  9.7319E-01    total aq
+  O2(aq)                    2.9069E-04  2.9069E-04  1.0000E+00    O2(g)
+  N2(aq)                    1.0028E-08  1.0028E-08  1.0000E+00    total aq
+  NO3-                      1.0028E-08  1.0028E-08  9.7299E-01    total aq
+  NH4+                      8.9755E-07  9.0256E-07  9.7288E-01    total aq
+  NO2-                      1.0028E-08  1.0028E-08  9.7299E-01    total aq
+  CO2(aq)                   1.0028E-06  1.0028E-06  1.0000E+00    total aq
+
+  complex                   molality    act coef        logK
+  ----------------------------------------------------------------------------
+  CO3--                     5.0993E-07  8.9722E-01    1.0329E+01
+  OH-                       1.0393E-07  9.7309E-01    1.3995E+01
+  NH3(aq)                   5.0132E-09  1.0000E+00    9.2410E+00
+
+
+  ----------------------------------------------------------------------------
+  primary species: Acetate-                   total conc:   1.3180E-04
+  complex species           percent   molality
+  ----------------------------------------------------------------------------
+  Acetate-                  100.00    1.3218E-04
+  ----------------------------------------------------------------------------
+  primary species: H+                         total conc:  -5.1476E-07
+  complex species           percent   molality
+  ----------------------------------------------------------------------------
+  CO3--                      70.67    5.0993E-07
+  OH-                        14.40    1.0393E-07
+  H+                         14.23    1.0265E-07
+  NH3(aq)                     0.69    5.0132E-09
+  ----------------------------------------------------------------------------
+  primary species: HCO3-                      total conc:   1.0000E-03
+  complex species           percent   molality
+  ----------------------------------------------------------------------------
+  HCO3-                      99.95    1.0023E-03
+  CO3--                       0.05    5.0993E-07
+  ----------------------------------------------------------------------------
+  primary species: O2(aq)                     total conc:   2.8986E-04
+  complex species           percent   molality
+  ----------------------------------------------------------------------------
+  O2(aq)                    100.00    2.9069E-04
+  ----------------------------------------------------------------------------
+  primary species: N2(aq)                     total conc:   1.0000E-08
+  complex species           percent   molality
+  ----------------------------------------------------------------------------
+  N2(aq)                    100.00    1.0028E-08
+  ----------------------------------------------------------------------------
+  primary species: NO3-                       total conc:   1.0000E-08
+  complex species           percent   molality
+  ----------------------------------------------------------------------------
+  NO3-                      100.00    1.0028E-08
+  ----------------------------------------------------------------------------
+  primary species: NH4+                       total conc:   9.0000E-07
+  complex species           percent   molality
+  ----------------------------------------------------------------------------
+  NH4+                       99.44    8.9755E-07
+  NH3(aq)                     0.56    5.0132E-09
+  ----------------------------------------------------------------------------
+  primary species: NO2-                       total conc:   1.0000E-08
+  complex species           percent   molality
+  ----------------------------------------------------------------------------
+  NO2-                      100.00    1.0028E-08
+  ----------------------------------------------------------------------------
+  primary species: CO2(aq)                    total conc:   1.0000E-06
+  complex species           percent   molality
+  ----------------------------------------------------------------------------
+  CO2(aq)                   100.00    1.0028E-06
+
+  gas        log part. press.  part. press. [bars]      log K
+  ----------------------------------------------------------------------------
+  CO2(g)       -2.1972E+00        6.3505E-03         -7.8136E+00
+  O2(g)        -6.3827E-01        2.3000E-01         -2.8983E+00
+  N2(g)         9.7743E+01        5.5301E+97         -1.0117E+02
+
+
+--------------------------------------------------------------------------------
+
+ Requested processors and decomposition =     1, npx,y,z=   -1  -1  -1
+ Actual decomposition: npx,y,z=    1   1   1
+
+
+TRAN Time Stepper
+                 acceleration: on
+       acceleration threshold: 5
+       number of ramp entries: 5
+                ramp entry #1: 2.0000
+                ramp entry #2: 2.0000
+                ramp entry #3: 2.0000
+                ramp entry #4: 2.0000
+                ramp entry #5: 2.0000
+                ramp entry #6: 1.8000
+                ramp entry #7: 1.6000
+                ramp entry #8: 1.4000
+                ramp entry #9: 1.2000
+               ramp entry #10: 1.0000
+               ramp entry #11: 1.0000
+               ramp entry #12: 1.0000
+               ramp entry #13: 1.0000
+      maximum number of steps: 999999
+constant time steps threshold: 5
+       maximum number of cuts: 16
+             reduction factor: 5.000000E-01
+        maximum growth factor: 2.000000E+00
+
+TRAN Newton Solver
+                         atol: 1.000000E-50
+                         rtol: 1.000000E-08
+                         stol: 1.000000E-08
+                         dtol: 1.000000E+04
+                      maxnorm: 1.000000E+20
+                    inftolres: -9.990000E+02
+                    inftolupd: -9.990000E+02
+                 inftolrelupd: -9.990000E+02
+                 inftolsclres: -9.990000E+02
+                     max iter: 50
+                     min iter: 1
+                         maxf: 10000
+                  matrix type: baij
+         precond. matrix type: baij
+               inexact newton: off
+            print convergence: on
+   print detailed convergence: off
+          check infinity norm: on
+
+TRAN Linear Solver
+                       solver: preonly
+               preconditioner: lu
+                         atol: 1.000000E-50
+                         rtol: 1.000000E-05
+                         dtol: 1.000000E+04
+            maximum iteration: 10000
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.05E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.76E-14 2x: 4.47E+01 2u: 7.78E-03 ir: 1.75E-14 iu: 7.77E-03 rsn:   0
+  2 2r: 2.64E-19 2x: 4.47E+01 2u: 3.00E-05 ir: 2.63E-19 iu: 3.00E-05 rsn:   0
+  3 2r: 2.18E-20 2x: 4.47E+01 2u: 4.51E-10 ir: 2.14E-20 iu: 4.51E-10 rsn: rtol
+ Step      1 Time=  1.00000E-05 Dt=  1.00000E-05 [d] snes_conv_reason:    3
+  newton =   3 [       3] linear =     3 [         3] cuts =  0 [   0]
+  --> max chng: dcmx=   4.4435E-10  dc/dt=   5.1429E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.05E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 3.49E-14 2x: 4.47E+01 2u: 1.54E-02 ir: 3.49E-14 iu: 1.54E-02 rsn:   0
+  2 2r: 2.05E-18 2x: 4.47E+01 2u: 1.18E-04 ir: 2.05E-18 iu: 1.18E-04 rsn:   0
+  3 2r: 8.27E-21 2x: 4.47E+01 2u: 6.92E-09 ir: 7.82E-21 iu: 6.92E-09 rsn: rtol
+ Step      2 Time=  3.00000E-05 Dt=  2.00000E-05 [d] snes_conv_reason:    3
+  newton =   3 [       6] linear =     3 [         6] cuts =  0 [   0]
+  --> max chng: dcmx=   8.8869E-10  dc/dt=   5.1429E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.05E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.91E-14 2x: 4.47E+01 2u: 3.04E-02 ir: 6.89E-14 iu: 3.04E-02 rsn:   0
+  2 2r: 1.56E-17 2x: 4.47E+01 2u: 4.51E-04 ir: 1.56E-17 iu: 4.51E-04 rsn:   0
+  3 2r: 7.99E-22 2x: 4.47E+01 2u: 1.02E-07 ir: 7.53E-22 iu: 1.02E-07 rsn: rtol
+ Step      3 Time=  7.00000E-05 Dt=  4.00000E-05 [d] snes_conv_reason:    3
+  newton =   3 [       9] linear =     3 [         9] cuts =  0 [   0]
+  --> max chng: dcmx=   1.7773E-09  dc/dt=   5.1428E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.05E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.35E-13 2x: 4.47E+01 2u: 5.89E-02 ir: 1.35E-13 iu: 5.89E-02 rsn:   0
+  2 2r: 1.12E-16 2x: 4.47E+01 2u: 1.67E-03 ir: 1.12E-16 iu: 1.67E-03 rsn:   0
+  3 2r: 2.17E-21 2x: 4.47E+01 2u: 1.39E-06 ir: 1.78E-21 iu: 1.39E-06 rsn: rtol
+ Step      4 Time=  1.50000E-04 Dt=  8.00000E-05 [d] snes_conv_reason:    3
+  newton =   3 [      12] linear =     3 [        12] cuts =  0 [   0]
+  --> max chng: dcmx=   3.5546E-09  dc/dt=   5.1426E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.05E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.59E-13 2x: 4.46E+01 2u: 1.11E-01 ir: 2.58E-13 iu: 1.11E-01 rsn:   0
+  2 2r: 7.36E-16 2x: 4.46E+01 2u: 5.71E-03 ir: 7.36E-16 iu: 5.71E-03 rsn:   0
+  3 2r: 6.08E-21 2x: 4.46E+01 2u: 1.64E-05 ir: 6.03E-21 iu: 1.64E-05 rsn: rtol
+ Step      5 Time=  3.10000E-04 Dt=  1.60000E-04 [d] snes_conv_reason:    3
+  newton =   3 [      15] linear =     3 [        15] cuts =  0 [   0]
+  --> max chng: dcmx=   7.1086E-09  dc/dt=   5.1422E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.05E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 4.77E-13 2x: 4.45E+01 2u: 1.99E-01 ir: 4.76E-13 iu: 1.99E-01 rsn:   0
+  2 2r: 4.10E-15 2x: 4.45E+01 2u: 1.73E-02 ir: 4.10E-15 iu: 1.73E-02 rsn:   0
+  3 2r: 3.11E-19 2x: 4.45E+01 2u: 1.52E-04 ir: 3.11E-19 iu: 1.52E-04 rsn:   0
+  4 2r: 2.77E-22 2x: 4.45E+01 2u: 1.15E-08 ir: 2.02E-22 iu: 1.15E-08 rsn: rtol
+ Step      6 Time=  6.30000E-04 Dt=  3.20000E-04 [d] snes_conv_reason:    3
+  newton =   4 [      19] linear =     4 [        19] cuts =  0 [   0]
+  --> max chng: dcmx=   1.4215E-08  dc/dt=   5.1415E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.05E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 8.22E-13 2x: 4.44E+01 2u: 3.29E-01 ir: 8.19E-13 iu: 3.29E-01 rsn:   0
+  2 2r: 1.76E-14 2x: 4.44E+01 2u: 4.35E-02 ir: 1.76E-14 iu: 4.35E-02 rsn:   0
+  3 2r: 8.53E-18 2x: 4.44E+01 2u: 9.73E-04 ir: 8.53E-18 iu: 9.73E-04 rsn:   0
+  4 2r: 3.26E-22 2x: 4.44E+01 2u: 4.74E-07 ir: 3.23E-22 iu: 4.74E-07 rsn: rtol
+ Step      7 Time=  1.27000E-03 Dt=  6.40000E-04 [d] snes_conv_reason:    3
+  newton =   4 [      23] linear =     4 [        23] cuts =  0 [   0]
+  --> max chng: dcmx=   2.8422E-08  dc/dt=   5.1400E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.05E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 9.64E-13 2x: 4.42E+01 2u: 3.83E-01 ir: 9.59E-13 iu: 3.81E-01 rsn:   0
+  2 2r: 2.66E-14 2x: 4.43E+01 2u: 5.66E-02 ir: 2.66E-14 iu: 5.66E-02 rsn:   0
+  3 2r: 2.20E-17 2x: 4.43E+01 2u: 1.66E-03 ir: 2.20E-17 iu: 1.66E-03 rsn:   0
+  4 2r: 2.60E-22 2x: 4.43E+01 2u: 1.38E-06 ir: 2.56E-22 iu: 1.38E-06 rsn: rtol
+ Step      8 Time=  2.27000E-03 Dt=  1.00000E-03 [d] snes_conv_reason:    3
+  newton =   4 [      27] linear =     4 [        27] cuts =  0 [   0]
+  --> max chng: dcmx=   4.4390E-08  dc/dt=   5.1377E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.04E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.58E-13 2x: 4.41E+01 2u: 2.75E-01 ir: 6.50E-13 iu: 2.72E-01 rsn:   0
+  2 2r: 9.95E-15 2x: 4.42E+01 2u: 3.10E-02 ir: 9.95E-15 iu: 3.10E-02 rsn:   0
+  3 2r: 2.43E-18 2x: 4.42E+01 2u: 4.89E-04 ir: 2.43E-18 iu: 4.89E-04 rsn:   0
+  4 2r: 1.16E-22 2x: 4.42E+01 2u: 1.19E-07 ir: 7.93E-23 iu: 1.19E-07 rsn: rtol
+ Step      9 Time=  3.27000E-03 Dt=  1.00000E-03 [d] snes_conv_reason:    3
+  newton =   4 [      31] linear =     4 [        31] cuts =  0 [   0]
+  --> max chng: dcmx=   4.4369E-08  dc/dt=   5.1353E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.03E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 4.98E-13 2x: 4.40E+01 2u: 2.16E-01 ir: 4.87E-13 iu: 2.11E-01 rsn:   0
+  2 2r: 4.69E-15 2x: 4.41E+01 2u: 1.94E-02 ir: 4.69E-15 iu: 1.94E-02 rsn:   0
+  3 2r: 4.45E-19 2x: 4.41E+01 2u: 1.90E-04 ir: 4.45E-19 iu: 1.90E-04 rsn:   0
+  4 2r: 6.47E-23 2x: 4.41E+01 2u: 1.80E-08 ir: 5.58E-23 iu: 1.80E-08 rsn: rtol
+ Step     10 Time=  4.27000E-03 Dt=  1.00000E-03 [d] snes_conv_reason:    3
+  newton =   4 [      35] linear =     4 [        35] cuts =  0 [   0]
+  --> max chng: dcmx=   4.4348E-08  dc/dt=   5.1329E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.03E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 4.00E-13 2x: 4.40E+01 2u: 1.79E-01 ir: 3.87E-13 iu: 1.72E-01 rsn:   0
+  2 2r: 2.54E-15 2x: 4.40E+01 2u: 1.33E-02 ir: 2.54E-15 iu: 1.32E-02 rsn:   0
+  3 2r: 1.11E-19 2x: 4.40E+01 2u: 8.80E-05 ir: 1.11E-19 iu: 8.80E-05 rsn: rtol
+ Step     11 Time=  5.27000E-03 Dt=  1.00000E-03 [d] snes_conv_reason:    3
+  newton =   3 [      38] linear =     3 [        38] cuts =  0 [   0]
+  --> max chng: dcmx=   4.4327E-08  dc/dt=   5.1305E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.02E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 3.34E-13 2x: 4.39E+01 2u: 1.55E-01 ir: 3.19E-13 iu: 1.45E-01 rsn:   0
+  2 2r: 1.51E-15 2x: 4.39E+01 2u: 9.62E-03 ir: 1.51E-15 iu: 9.55E-03 rsn:   0
+  3 2r: 3.46E-20 2x: 4.39E+01 2u: 4.58E-05 ir: 3.46E-20 iu: 4.58E-05 rsn: rtol
+ Step     12 Time=  6.27000E-03 Dt=  1.00000E-03 [d] snes_conv_reason:    3
+  newton =   3 [      41] linear =     3 [        41] cuts =  0 [   0]
+  --> max chng: dcmx=   4.4305E-08  dc/dt=   5.1280E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.28E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.01E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.88E-13 2x: 4.38E+01 2u: 1.38E-01 ir: 2.70E-13 iu: 1.25E-01 rsn:   0
+  2 2r: 9.67E-16 2x: 4.38E+01 2u: 7.33E-03 ir: 9.67E-16 iu: 7.20E-03 rsn:   0
+  3 2r: 1.25E-20 2x: 4.38E+01 2u: 2.60E-05 ir: 1.25E-20 iu: 2.60E-05 rsn: rtol
+ Step     13 Time=  7.27000E-03 Dt=  1.00000E-03 [d] snes_conv_reason:    3
+  newton =   3 [      44] linear =     3 [        44] cuts =  0 [   0]
+  --> max chng: dcmx=   4.4283E-08  dc/dt=   5.1254E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.27E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 9.00E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.54E-13 2x: 4.37E+01 2u: 1.25E-01 ir: 2.33E-13 iu: 1.10E-01 rsn:   0
+  2 2r: 6.51E-16 2x: 4.37E+01 2u: 5.80E-03 ir: 6.50E-16 iu: 5.61E-03 rsn:   0
+  3 2r: 5.12E-21 2x: 4.37E+01 2u: 1.58E-05 ir: 5.11E-21 iu: 1.58E-05 rsn: rtol
+ Step     14 Time=  8.27000E-03 Dt=  1.00000E-03 [d] snes_conv_reason:    3
+  newton =   3 [      47] linear =     3 [        47] cuts =  0 [   0]
+  --> max chng: dcmx=   4.4261E-08  dc/dt=   5.1228E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.27E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.99E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.28E-13 2x: 4.37E+01 2u: 1.16E-01 ir: 2.04E-13 iu: 9.80E-02 rsn:   0
+  2 2r: 4.56E-16 2x: 4.37E+01 2u: 4.76E-03 ir: 4.56E-16 iu: 4.49E-03 rsn:   0
+  3 2r: 2.30E-21 2x: 4.37E+01 2u: 1.02E-05 ir: 2.29E-21 iu: 1.01E-05 rsn: rtol
+ Step     15 Time=  9.27000E-03 Dt=  1.00000E-03 [d] snes_conv_reason:    3
+  newton =   3 [      50] linear =     3 [        50] cuts =  0 [   0]
+  --> max chng: dcmx=   4.4238E-08  dc/dt=   5.1201E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.27E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.98E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.07E-13 2x: 4.36E+01 2u: 1.09E-01 ir: 1.81E-13 iu: 8.82E-02 rsn:   0
+  2 2r: 3.30E-16 2x: 4.36E+01 2u: 4.02E-03 ir: 3.30E-16 iu: 3.66E-03 rsn:   0
+  3 2r: 1.11E-21 2x: 4.36E+01 2u: 6.85E-06 ir: 1.10E-21 iu: 6.70E-06 rsn: rtol
+ Step     16 Time=  1.02700E-02 Dt=  1.00000E-03 [d] snes_conv_reason:    3
+  newton =   3 [      53] linear =     3 [        53] cuts =  0 [   0]
+  --> max chng: dcmx=   4.4214E-08  dc/dt=   5.1174E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.27E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.97E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 3.83E-13 2x: 4.35E+01 2u: 2.10E-01 ir: 3.28E-13 iu: 1.59E-01 rsn:   0
+  2 2r: 1.83E-15 2x: 4.35E+01 2u: 1.35E-02 ir: 1.83E-15 iu: 1.13E-02 rsn:   0
+  3 2r: 5.78E-20 2x: 4.35E+01 2u: 7.01E-05 ir: 5.78E-20 iu: 6.35E-05 rsn: rtol
+ Step     17 Time=  1.22700E-02 Dt=  2.00000E-03 [d] snes_conv_reason:    3
+  newton =   3 [      56] linear =     3 [        56] cuts =  0 [   0]
+  --> max chng: dcmx=   8.8332E-08  dc/dt=   5.1118E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.27E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.94E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.66E-13 2x: 4.32E+01 2u: 3.94E-01 ir: 5.46E-13 iu: 2.68E-01 rsn:   0
+  2 2r: 7.79E-15 2x: 4.33E+01 2u: 4.27E-02 ir: 7.65E-15 iu: 3.15E-02 rsn:   0
+  3 2r: 1.61E-18 2x: 4.33E+01 2u: 6.73E-04 ir: 1.56E-18 iu: 5.31E-04 rsn:   0
+  4 2r: 5.31E-23 2x: 4.33E+01 2u: 1.68E-07 ir: 3.68E-23 iu: 1.45E-07 rsn: rtol
+ Step     18 Time=  1.62700E-02 Dt=  4.00000E-03 [d] snes_conv_reason:    3
+  newton =   4 [      60] linear =     4 [        60] cuts =  0 [   0]
+  --> max chng: dcmx=   1.7625E-07  dc/dt=   5.1000E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.26E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.89E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.05E-12 2x: 4.28E+01 2u: 7.12E-01 ir: 7.86E-13 iu: 5.34E-01 rsn:   0
+  2 2r: 2.51E-14 2x: 4.29E+01 2u: 1.20E-01 ir: 2.12E-14 iu: 1.04E-01 rsn:   0
+  3 2r: 4.40E-17 2x: 4.29E+01 2u: 6.05E-03 ir: 4.07E-17 iu: 5.82E-03 rsn:   0
+  4 2r: 3.37E-22 2x: 4.29E+01 2u: 1.66E-05 ir: 3.31E-22 iu: 1.65E-05 rsn: rtol
+ Step     19 Time=  2.42700E-02 Dt=  8.00000E-03 [d] snes_conv_reason:    3
+  newton =   4 [      64] linear =     4 [        64] cuts =  0 [   0]
+  --> max chng: dcmx=   3.5065E-07  dc/dt=   5.0731E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.25E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.76E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 9.24E-13 2x: 4.24E+01 2u: 7.11E-01 ir: 5.85E-13 iu: 5.13E-01 rsn:   0
+  2 2r: 1.80E-14 2x: 4.25E+01 2u: 1.08E-01 ir: 1.40E-14 iu: 9.62E-02 rsn:   0
+  3 2r: 3.38E-17 2x: 4.25E+01 2u: 4.93E-03 ir: 3.34E-17 iu: 4.81E-03 rsn:   0
+  4 2r: 1.78E-22 2x: 4.25E+01 2u: 1.11E-05 ir: 1.77E-22 iu: 1.11E-05 rsn: rtol
+ Step     20 Time=  3.42700E-02 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [      68] linear =     4 [        68] cuts =  0 [   0]
+  --> max chng: dcmx=   4.3478E-07  dc/dt=   5.0321E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.23E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.59E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.92E-13 2x: 4.21E+01 2u: 5.83E-01 ir: 4.46E-13 iu: 3.77E-01 rsn:   0
+  2 2r: 7.47E-15 2x: 4.21E+01 2u: 6.56E-02 ir: 6.35E-15 iu: 5.62E-02 rsn:   0
+  3 2r: 4.95E-18 2x: 4.21E+01 2u: 1.66E-03 ir: 4.93E-18 iu: 1.59E-03 rsn:   0
+  4 2r: 9.73E-24 2x: 4.21E+01 2u: 1.22E-06 ir: 9.14E-24 iu: 1.20E-06 rsn: rtol
+ Step     21 Time=  4.42700E-02 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [      72] linear =     4 [        72] cuts =  0 [   0]
+  --> max chng: dcmx=   4.3029E-07  dc/dt=   4.9802E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.22E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.42E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.83E-13 2x: 4.18E+01 2u: 5.03E-01 ir: 4.34E-13 iu: 2.96E-01 rsn:   0
+  2 2r: 4.33E-15 2x: 4.18E+01 2u: 4.71E-02 ir: 3.34E-15 iu: 3.62E-02 rsn:   0
+  3 2r: 1.06E-18 2x: 4.18E+01 2u: 7.20E-04 ir: 1.06E-18 iu: 6.49E-04 rsn:   0
+  4 2r: 3.97E-24 2x: 4.18E+01 2u: 2.10E-07 ir: 3.06E-24 iu: 2.01E-07 rsn: rtol
+ Step     22 Time=  5.42700E-02 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [      76] linear =     4 [        76] cuts =  0 [   0]
+  --> max chng: dcmx=   4.2447E-07  dc/dt=   4.9129E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.20E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.23E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 7.27E-13 2x: 4.16E+01 2u: 4.43E-01 ir: 5.70E-13 iu: 2.42E-01 rsn:   0
+  2 2r: 4.31E-15 2x: 4.16E+01 2u: 3.81E-02 ir: 2.91E-15 iu: 2.50E-02 rsn:   0
+  3 2r: 3.24E-19 2x: 4.16E+01 2u: 3.86E-04 ir: 2.94E-19 iu: 3.08E-04 rsn:   0
+  4 2r: 2.65E-23 2x: 4.16E+01 2u: 5.09E-08 ir: 2.43E-23 iu: 4.55E-08 rsn: rtol
+ Step     23 Time=  6.42700E-02 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [      80] linear =     4 [        80] cuts =  0 [   0]
+  --> max chng: dcmx=   4.1672E-07  dc/dt=   4.8232E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.17E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 8.01E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 7.27E-13 2x: 4.14E+01 2u: 4.01E-01 ir: 5.81E-13 iu: 2.04E-01 rsn:   0
+  2 2r: 4.87E-15 2x: 4.15E+01 2u: 3.38E-02 ir: 3.39E-15 iu: 1.92E-02 rsn:   0
+  3 2r: 3.22E-19 2x: 4.15E+01 2u: 2.84E-04 ir: 2.85E-19 iu: 1.77E-04 rsn:   0
+  4 2r: 1.40E-23 2x: 4.15E+01 2u: 2.18E-08 ir: 1.17E-23 iu: 1.49E-08 rsn: rtol
+ Step     24 Time=  7.42700E-02 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [      84] linear =     4 [        84] cuts =  0 [   0]
+  --> max chng: dcmx=   4.0603E-07  dc/dt=   4.6994E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.14E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 7.74E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.99E-13 2x: 4.13E+01 2u: 3.78E-01 ir: 5.29E-13 iu: 2.24E-01 rsn:   0
+  2 2r: 6.09E-15 2x: 4.14E+01 2u: 3.51E-02 ir: 5.25E-15 iu: 2.72E-02 rsn:   0
+  3 2r: 8.57E-19 2x: 4.14E+01 2u: 3.77E-04 ir: 8.42E-19 iu: 3.48E-04 rsn:   0
+  4 2r: 1.07E-23 2x: 4.14E+01 2u: 5.63E-08 ir: 8.78E-24 iu: 5.57E-08 rsn: rtol
+ Step     25 Time=  8.42700E-02 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [      88] linear =     4 [        88] cuts =  0 [   0]
+  --> max chng: dcmx=   3.9064E-07  dc/dt=   4.5214E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.10E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 7.38E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.71E-13 2x: 4.13E+01 2u: 3.79E-01 ir: 4.73E-13 iu: 2.73E-01 rsn:   0
+  2 2r: 8.82E-15 2x: 4.13E+01 2u: 4.39E-02 ir: 8.30E-15 iu: 4.01E-02 rsn:   0
+  3 2r: 2.70E-18 2x: 4.13E+01 2u: 7.38E-04 ir: 2.67E-18 iu: 7.29E-04 rsn:   0
+  4 2r: 1.84E-23 2x: 4.13E+01 2u: 2.35E-07 ir: 1.37E-23 iu: 2.34E-07 rsn: rtol
+ Step     26 Time=  9.42700E-02 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [      92] linear =     4 [        92] cuts =  0 [   0]
+  --> max chng: dcmx=   3.6745E-07  dc/dt=   4.2529E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 1.03E-11 2x: 0.00E+00 2u: 0.00E+00 ir: 6.86E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 4.06E-13 2x: 4.13E+01 2u: 2.40E-01 ir: 3.40E-13 iu: 2.02E-01 rsn:   0
+  2 2r: 3.32E-15 2x: 4.13E+01 2u: 2.18E-02 ir: 3.28E-15 iu: 2.13E-02 rsn:   0
+  3 2r: 3.13E-19 2x: 4.13E+01 2u: 2.10E-04 ir: 3.12E-19 iu: 2.09E-04 rsn:   0
+  4 2r: 2.14E-23 2x: 4.13E+01 2u: 1.99E-08 ir: 1.98E-23 iu: 1.99E-08 rsn: rtol
+ Step     27 Time=  1.00000E-01 Dt=  5.73000E-03 [d] snes_conv_reason:    3
+  newton =   4 [      96] linear =     4 [        96] cuts =  0 [   0]
+  --> max chng: dcmx=   1.9949E-07  dc/dt=   4.0294E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 9.75E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 6.45E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.32E-13 2x: 4.13E+01 2u: 4.43E-01 ir: 5.36E-13 iu: 3.92E-01 rsn:   0
+  2 2r: 1.66E-14 2x: 4.13E+01 2u: 7.97E-02 ir: 1.60E-14 iu: 7.85E-02 rsn:   0
+  3 2r: 1.56E-17 2x: 4.13E+01 2u: 2.50E-03 ir: 1.52E-17 iu: 2.49E-03 rsn:   0
+  4 2r: 1.70E-23 2x: 4.13E+01 2u: 2.39E-06 ir: 1.39E-23 iu: 2.38E-06 rsn: rtol
+ Step     28 Time=  1.10000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [     100] linear =     4 [       100] cuts =  0 [   0]
+  --> max chng: dcmx=   3.0016E-07  dc/dt=   3.4741E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 8.42E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 5.43E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 5.61E-13 2x: 4.14E+01 2u: 5.25E-01 ir: 5.18E-13 iu: 4.95E-01 rsn:   0
+  2 2r: 2.06E-14 2x: 4.15E+01 2u: 1.17E-01 ir: 2.05E-14 iu: 1.16E-01 rsn:   0
+  3 2r: 3.55E-17 2x: 4.15E+01 2u: 5.00E-03 ir: 3.55E-17 iu: 4.99E-03 rsn:   0
+  4 2r: 1.08E-22 2x: 4.15E+01 2u: 8.68E-06 ir: 1.07E-22 iu: 8.66E-06 rsn: rtol
+ Step     29 Time=  1.20000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [     104] linear =     4 [       104] cuts =  0 [   0]
+  --> max chng: dcmx=   2.8344E-07  dc/dt=   3.2805E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 6.48E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 4.24E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 4.38E-13 2x: 4.16E+01 2u: 6.08E-01 ir: 4.31E-13 iu: 5.89E-01 rsn:   0
+  2 2r: 2.57E-14 2x: 4.17E+01 2u: 1.58E-01 ir: 2.32E-14 iu: 1.58E-01 rsn:   0
+  3 2r: 9.16E-17 2x: 4.17E+01 2u: 9.53E-03 ir: 7.90E-17 iu: 9.52E-03 rsn:   0
+  4 2r: 1.08E-21 2x: 4.17E+01 2u: 3.26E-05 ir: 9.24E-22 iu: 3.26E-05 rsn: rtol
+ Step     30 Time=  1.30000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [     108] linear =     4 [       108] cuts =  0 [   0]
+  --> max chng: dcmx=   2.9129E-07  dc/dt=   3.3714E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 4.34E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 2.99E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 3.70E-13 2x: 4.19E+01 2u: 6.36E-01 ir: 2.98E-13 iu: 6.21E-01 rsn:   0
+  2 2r: 3.25E-14 2x: 4.20E+01 2u: 1.96E-01 ir: 2.22E-14 iu: 1.96E-01 rsn:   0
+  3 2r: 2.35E-16 2x: 4.20E+01 2u: 1.71E-02 ir: 1.55E-16 iu: 1.71E-02 rsn:   0
+  4 2r: 1.17E-20 2x: 4.20E+01 2u: 1.21E-04 ir: 7.67E-21 iu: 1.21E-04 rsn: rtol
+ Step     31 Time=  1.40000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [     112] linear =     4 [       112] cuts =  0 [   0]
+  --> max chng: dcmx=   2.9789E-07  dc/dt=   3.4478E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 3.03E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.95E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 2.46E-13 2x: 4.22E+01 2u: 6.03E-01 ir: 1.59E-13 iu: 5.89E-01 rsn:   0
+  2 2r: 2.34E-14 2x: 4.23E+01 2u: 2.06E-01 ir: 1.44E-14 iu: 2.06E-01 rsn:   0
+  3 2r: 2.27E-16 2x: 4.23E+01 2u: 2.13E-02 ir: 1.41E-16 iu: 2.13E-02 rsn:   0
+  4 2r: 2.12E-20 2x: 4.23E+01 2u: 2.07E-04 ir: 1.32E-20 iu: 2.07E-04 rsn: rtol
+ Step     32 Time=  1.50000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [     116] linear =     4 [       116] cuts =  0 [   0]
+  --> max chng: dcmx=   3.0344E-07  dc/dt=   3.5120E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.70E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.68E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 1.16E-13 2x: 4.25E+01 2u: 5.25E-01 ir: 6.90E-14 iu: 5.09E-01 rsn:   0
+  2 2r: 8.55E-15 2x: 4.26E+01 2u: 1.64E-01 ir: 5.44E-15 iu: 1.64E-01 rsn:   0
+  3 2r: 5.69E-17 2x: 4.26E+01 2u: 1.40E-02 ir: 3.62E-17 iu: 1.40E-02 rsn:   0
+  4 2r: 2.52E-21 2x: 4.26E+01 2u: 9.33E-05 ir: 1.60E-21 iu: 9.33E-05 rsn: rtol
+ Step     33 Time=  1.60000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [     120] linear =     4 [       120] cuts =  0 [   0]
+  --> max chng: dcmx=   3.0811E-07  dc/dt=   3.5661E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.66E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.79E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.97E-14 2x: 4.28E+01 2u: 3.97E-01 ir: 5.35E-14 iu: 3.78E-01 rsn:   0
+  2 2r: 1.51E-15 2x: 4.28E+01 2u: 8.72E-02 ir: 9.83E-16 iu: 8.71E-02 rsn:   0
+  3 2r: 2.88E-18 2x: 4.28E+01 2u: 3.87E-03 ir: 1.84E-18 iu: 3.87E-03 rsn:   0
+  4 2r: 1.83E-23 2x: 4.28E+01 2u: 7.26E-06 ir: 1.44E-23 iu: 7.26E-06 rsn: rtol
+ Step     34 Time=  1.70000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   4 [     124] linear =     4 [       124] cuts =  0 [   0]
+  --> max chng: dcmx=   3.1205E-07  dc/dt=   3.6117E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.62E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.79E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.86E-14 2x: 4.29E+01 2u: 2.52E-01 ir: 6.36E-14 iu: 2.23E-01 rsn:   0
+  2 2r: 1.30E-16 2x: 4.29E+01 2u: 2.81E-02 ir: 7.68E-17 iu: 2.78E-02 rsn:   0
+  3 2r: 2.22E-20 2x: 4.29E+01 2u: 3.83E-04 ir: 1.43E-20 iu: 3.83E-04 rsn: rtol
+ Step     35 Time=  1.80000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   3 [     127] linear =     3 [       127] cuts =  0 [   0]
+  --> max chng: dcmx=   3.1538E-07  dc/dt=   3.6502E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.55E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.73E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.88E-14 2x: 4.30E+01 2u: 1.54E-01 ir: 6.55E-14 iu: 1.03E-01 rsn:   0
+  2 2r: 1.05E-16 2x: 4.30E+01 2u: 6.85E-03 ir: 1.04E-16 iu: 5.44E-03 rsn:   0
+  3 2r: 2.62E-22 2x: 4.30E+01 2u: 1.55E-05 ir: 2.59E-22 iu: 1.43E-05 rsn: rtol
+ Step     36 Time=  1.90000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   3 [     130] linear =     3 [       130] cuts =  0 [   0]
+  --> max chng: dcmx=   3.1818E-07  dc/dt=   3.6827E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.47E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.66E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.73E-14 2x: 4.30E+01 2u: 1.19E-01 ir: 6.48E-14 iu: 8.37E-02 rsn:   0
+  2 2r: 1.11E-16 2x: 4.30E+01 2u: 4.21E-03 ir: 1.10E-16 iu: 3.55E-03 rsn:   0
+  3 2r: 3.21E-22 2x: 4.30E+01 2u: 6.44E-06 ir: 3.20E-22 iu: 6.05E-06 rsn: rtol
+ Step     37 Time=  2.00000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   3 [     133] linear =     3 [       133] cuts =  0 [   0]
+  --> max chng: dcmx=   3.2054E-07  dc/dt=   3.7100E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.38E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.57E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.52E-14 2x: 4.30E+01 2u: 1.11E-01 ir: 6.33E-14 iu: 8.63E-02 rsn:   0
+  2 2r: 1.15E-16 2x: 4.30E+01 2u: 4.23E-03 ir: 1.14E-16 iu: 3.77E-03 rsn:   0
+  3 2r: 3.76E-22 2x: 4.30E+01 2u: 7.07E-06 ir: 3.76E-22 iu: 6.85E-06 rsn: rtol
+ Step     38 Time=  2.10000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   3 [     136] linear =     3 [       136] cuts =  0 [   0]
+  --> max chng: dcmx=   3.2250E-07  dc/dt=   3.7327E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.29E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.48E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.31E-14 2x: 4.30E+01 2u: 1.10E-01 ir: 6.14E-14 iu: 8.88E-02 rsn:   0
+  2 2r: 1.18E-16 2x: 4.30E+01 2u: 4.35E-03 ir: 1.18E-16 iu: 4.00E-03 rsn:   0
+  3 2r: 4.37E-22 2x: 4.30E+01 2u: 7.84E-06 ir: 4.36E-22 iu: 7.70E-06 rsn: rtol
+ Step     39 Time=  2.20000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   3 [     139] linear =     3 [       139] cuts =  0 [   0]
+  --> max chng: dcmx=   3.2411E-07  dc/dt=   3.7513E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.21E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.40E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 6.08E-14 2x: 4.30E+01 2u: 1.10E-01 ir: 5.93E-14 iu: 9.12E-02 rsn:   0
+  2 2r: 1.21E-16 2x: 4.30E+01 2u: 4.50E-03 ir: 1.20E-16 iu: 4.23E-03 rsn:   0
+  3 2r: 4.99E-22 2x: 4.30E+01 2u: 8.71E-06 ir: 4.99E-22 iu: 8.63E-06 rsn: rtol
+ Step     40 Time=  2.30000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   3 [     142] linear =     3 [       142] cuts =  0 [   0]
+  --> max chng: dcmx=   3.2541E-07  dc/dt=   3.7664E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.13E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.31E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 5.84E-14 2x: 4.30E+01 2u: 1.10E-01 ir: 5.70E-14 iu: 9.36E-02 rsn:   0
+  2 2r: 1.23E-16 2x: 4.30E+01 2u: 4.68E-03 ir: 1.22E-16 iu: 4.47E-03 rsn:   0
+  3 2r: 5.65E-22 2x: 4.30E+01 2u: 9.67E-06 ir: 5.65E-22 iu: 9.62E-06 rsn: rtol
+ Step     41 Time=  2.40000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   3 [     145] linear =     3 [       145] cuts =  0 [   0]
+  --> max chng: dcmx=   3.2643E-07  dc/dt=   3.7781E-10 [mol/s]
+
+== REACTIVE TRANSPORT ==========================================================
+  0 2r: 2.05E-12 2x: 0.00E+00 2u: 0.00E+00 ir: 1.22E-12 iu: 0.00E+00 rsn:   0
+  1 2r: 5.58E-14 2x: 4.31E+01 2u: 1.10E-01 ir: 5.45E-14 iu: 9.60E-02 rsn:   0
+  2 2r: 1.23E-16 2x: 4.31E+01 2u: 4.87E-03 ir: 1.23E-16 iu: 4.71E-03 rsn:   0
+  3 2r: 6.33E-22 2x: 4.31E+01 2u: 1.07E-05 ir: 6.32E-22 iu: 1.07E-05 rsn: rtol
+ Step     42 Time=  2.50000E-01 Dt=  1.00000E-02 [d] snes_conv_reason:    3
+  newton =   3 [     148] linear =     3 [       148] cuts =  0 [   0]
+  --> max chng: dcmx=   3.2718E-07  dc/dt=   3.7868E-10 [mol/s]
+
+ Wall Clock Time:  7.4458E-02 [sec]   1.2410E-03 [min]   2.0683E-05 [hr]
