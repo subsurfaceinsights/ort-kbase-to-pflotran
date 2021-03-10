@@ -25,7 +25,7 @@ NAR_NAME: ORT_N_cycle
 
 `NAR_NAME` is the display name you want to use for storing the results. You can put whatever you want here.
 
-To use this with narratives other than the test case shown here,
+To use this with narratives other than the test case shown here, place the appropriate narrative ID and display name in the config file. You can obtain your narrative ID and authentication token by running `os.environ` in a code cell in the narrative of interest, but be sure not to leave the cell in the narrative if it is shared, as that will allow anyone else with access to that narrative to get your authentication token as well.
 
 ## Using this code
 To use this code, you need to populate the `config.yml` file with the appropriate information. Then, run 
@@ -39,4 +39,11 @@ from the terminal and it will automatically download and format the reactions. A
 The PFLOTRAN infiles included in this repository (in the `infiles` folder) are for the 0D system described in the manuscript (generated programmatically), but the same process could be used to generate MICROBIAL\_REACTION inputs for any model you wish.
 
 If you do not have PFLOTRAN installed, you can run these infiles using [our free PFLOTRAN v3 docker image](https://hub.docker.com/r/subsurfaceinsights/pflotran)
+
+Once docker is installed, you can run the model from the `infiles` directory using:
+
+```
+docker run -V $(pwd):/data subsurfaceinsights/pflotran -pflotranin ./<infile_namen.in>
+```
+where `<infile_name>` is replaced with the actual name of the infile you want to run.
 
