@@ -12,158 +12,16 @@ fbas: <modelname>.<details>.fba
 `details` are optional and can include media type/ constraints/ etc
 """
 
-# Standard libraries
+# Imports
 import sys
 import json
 import os
-import copy
 import csv
 import yaml
 import numpy as np
-
-# Less common libraries
-from lib.installed_clients.WorkspaceClient import Workspace
 import periodictable as ptab
-
-
-def ion_size():
-    """
-    Library of ion size parameters.
-
-    Mapped to formulas used in ModelSEED database
-
-    From lookup table in excel spreadsheet released by Brian M. Tissue
-    http://www.tissuegroup.chem.vt.edu/a-text/index.html
-
-    This is only a partial list for now, can populate more as needed
-    """
-    sizes = {
-            "Ag": 2.5,
-            "Al": 9,
-            "Ba": 5,
-            "B": 8,
-            "Br": 3,
-            "BrO3": 3.5,
-            "CHO3": 4.5,  # ModelSEED treats this as a synonym for CO3
-            "Acetate": 4.5,
-            "Ca": 6,
-            "Cd": 5,
-            "Cl": 3,
-            "ClO2": 4,
-            "ClO3": 3.5,
-            "ClO4": 3.5,
-            "CN": 3,
-            "Co": 6,
-            "Cr": 9,
-            "CrO4": 4,
-            "Cs": 2.5,
-            "Cu": 6,
-            "F": 3.5,
-            "Fe2": 6,
-            "Fe3": 9,
-            "H": 9,
-            "H3O+": 9,
-            "I": 3,
-            "IO3": 4,
-            "IO4": 3.5,
-            "K": 3,
-            "Mg": 8,
-            "Mn": 6,
-            "MnO4": 3.5,
-            "MoO4": 4.5,
-            "NH4": 2.5,
-            "NO2": 3,
-            "NO3": 3,
-            "Na": 4,
-            "Nd": 9,
-            "Ni": 6,
-            "OH": 3.5,
-            "PO4": 4,
-            "HPO4": 4,
-            "H2PO4": 4,
-            "S": 5,
-            "HS": 3.5,
-            "SO3": 4.5,
-            "HSO3": 4,
-            "SO4": 4,
-            "O4S2": 5,
-            "Zn": 6,
-            "H2O": 3
-            }
-    return sizes
-
-
-def rename(cpds, f_index, name_index, charge_index, rmdisplay=1):
-    """
-    Rename modelseed compounds to match (approximately) PFLOTRAN conventions.
-
-    Currently this mostly means adding charges (in symbol form) to
-    the end of the name. The function also fixes some quirky compound names
-    (e.g. H4N = NH4) and substitutes a generic formula in for biomass (C5H7O2N)
-    If other compounds have 'null' formula this will need to be refined.
-
-    **cpds**: ordered array from KBase FBA Objects (from the KBase API)
-
-    **f_index**: index of formula in input array
-
-    **name_index**: index of ModelSEED name in input array
-
-    **charge_index**: index of the compound charge in the input array
-
-    **rmdisplay**: 0 to keep items at name_index, 1 to remove (*default 1*).
-    For long formulas, the actual formula and the display name switch columns.
-    We don't usually need the actual formula, but if we do, use this to keep it
-    """
-    newcpds = copy.deepcopy(cpds)
-
-    for cpd in newcpds:
-        cpd[charge_index] = int(cpd[charge_index])
-    for cpd in newcpds:
-        if cpd[f_index] == "H4N":
-            cpd[f_index] = "NH4"
-        elif cpd[f_index] == "O4S":
-            cpd[f_index] = "SO4"
-        elif cpd[f_index] == "HO4P":
-            cpd[f_index] = "HPO4"
-        elif cpd[f_index] == "CHO3":
-            cpd[f_index] = "HCO3"
-        elif cpd[f_index] == "CH4O":
-            cpd[f_index] = "Methanol"
-    # For short formulas, keep those and add charges.
-    # For longer, use display names
-    for new_cpd in newcpds:
-        if len(new_cpd[f_index]) > 4:
-            new_cpd[f_index] = (new_cpd[name_index].replace('-', '')
-                                .replace('+', '').replace('/', '')
-                                .replace('*', '').replace('(', '')
-                                .replace(')', '').replace('[', '')
-                                .replace(']', '').replace('{', '')
-                                .replace('}', '').replace(',', '')
-                                .replace('\'', ''))
-        else:
-            new_cpd[f_index] = new_cpd[f_index]
-
-    # Append charges per pflotran typical style.
-    pos_charges = [1, 2, 3]
-    neg_charges = [-1, -2, -3]
-
-    for new_cpd in newcpds:
-        if new_cpd[charge_index] in pos_charges:
-            new_cpd[f_index] += new_cpd[charge_index]*"+"
-        elif new_cpd[charge_index] in neg_charges:
-            new_cpd[f_index] += abs(new_cpd[charge_index])*"-"
-        elif new_cpd[charge_index] == 0:
-            new_cpd[f_index] += "(aq)"
-        else:
-            # Some ModelSEED compounds have crazy charges -> make strings
-            new_cpd[f_index] += str(new_cpd[charge_index])
-    # Biomass ends up with (aq) appended, but this doesn't affect anything
-
-    if rmdisplay == 1:
-        for item in newcpds:
-            item.pop(name_index)
-
-    return newcpds
+from lib.installed_clients.WorkspaceClient import Workspace
+from kbpf_tools import ion_size, rename
 
 
 # Config file includes parameters for KBase API.
